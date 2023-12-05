@@ -34,7 +34,7 @@
 + (void)Browser
 {
     id str = 
-@"<h1>Welcome to the PUCKO Browser</h1>\n"
+@"<h1>Welcome to the PUCKO Web Browser</h1>\n"
 @"<p>Right-click to access the contextual menu</p>\n"
 ;
 
