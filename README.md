@@ -2,6 +2,8 @@
 
 Building a web browser that follows the Unix philosophy
 
+For more information, please visit http://puckoweb.com
+
 ## Overview
 
 The basic design goals of PUCKO Web include:
