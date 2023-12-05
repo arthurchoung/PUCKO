@@ -1,4 +1,4 @@
-# PUCKO Web
+# PUCKO Web Browser
 
 Building a web browser that follows the Unix philosophy
 
