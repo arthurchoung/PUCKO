@@ -18,6 +18,8 @@ The basic design goals of PUCKO Web include:
 
 This is mostly for educational purposes.
 
+PUCKO Web is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **Operator** on the Web.
+
 ## Notes
 
 The very first web browser was written in Objective-C.
