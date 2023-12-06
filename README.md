@@ -336,7 +336,7 @@ This represents a very simple browser that can follow links.
 
 ## Related Project
 
-Hotdog Linux
+HOTDOG Linux
 
 http://hotdoglinux.com
 
