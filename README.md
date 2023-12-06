@@ -334,6 +334,12 @@ This will download the files to the current directory, and view them. If a link 
 
 This represents a very simple browser that can follow links.
 
+## Related Project
+
+Hotdog Linux
+
+http://hotdoglinux.com
+
 ## Legal
 
 Copyright (c) 2023 Arthur Choung. All rights reserved.
