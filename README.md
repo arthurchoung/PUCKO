@@ -18,7 +18,7 @@ The basic design goals of PUCKO Web include:
 
 This is mostly for educational purposes.
 
-PUCKO Web is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **Operator** on the Web.
+PUCKO Web is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **O**perator on the Web.
 
 ## Notes
 
