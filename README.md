@@ -1,12 +1,12 @@
-# PUCKO Web Browser
+# PUCKO Linux Web Browser
 
 Building a web browser that follows the Unix philosophy
 
-For more information, please visit http://puckoweb.com
+For more information, please visit http://puckolinux.com
 
 ## Overview
 
-The basic design goals of PUCKO Web include:
+The basic design goals of PUCKO Linux include:
 
   * Not monolithic
 
@@ -18,7 +18,7 @@ The basic design goals of PUCKO Web include:
 
 This is mostly for educational purposes.
 
-PUCKO Web is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **O**perator on the Web.
+PUCKO Linux is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **O**perator for Linux.
 
 ## Notes
 
