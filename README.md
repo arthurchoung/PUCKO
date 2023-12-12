@@ -18,7 +18,7 @@ The basic design goals of PUCKO Linux include:
 
 This is mostly for educational purposes.
 
-PUCKO Linux is an acronym that stands for **P**roblematic **U**neducated **C**omputer **K**eyboard **O**perator for Linux.
+PUCKO Linux is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator for Linux.
 
 ## Notes
 
