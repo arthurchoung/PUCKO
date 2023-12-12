@@ -138,7 +138,7 @@
         [dict setValue:path forKey:@"path"];
         [dict setValue:part forKey:@"part"];
         [dict setValue:mimeType forKey:@"mimeType"];
-        [dict setValue:@"NSArray|addObject:'pucko-openMailPart.pl'|addObject:(path)|addObject:(part)|addObject:(mimeType)|runCommandInBackground" forKey:@"messageForClick"];
+        [dict setValue:@"NSArray|addObject:'pucko-mail-openPart.pl'|addObject:(path)|addObject:(part)|addObject:(mimeType)|runCommandInBackground" forKey:@"messageForClick"];
         [arr addObject:dict];
     }
 
