@@ -1,14 +1,14 @@
 /*
 
- PUCKO Web
+ PUCKO Linux
 
  Copyright (c) 2023 Arthur Choung. All rights reserved.
 
  Email: arthur -at- hotdoglinux.com
 
- This file is part of PUCKO Web.
+ This file is part of PUCKO Linux.
 
- PUCKO Web is free software: you can redistribute it and/or modify
+ PUCKO Linux is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
