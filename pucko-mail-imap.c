@@ -1004,26 +1004,26 @@ static void imap_init()
 
     char downloadbuf[BUFSIZE];
     sprintf(downloadbuf,
-"socat openssl:%s:993 system:'pucko-imap download'\n"
-"#socat openssl:%s:993,verify=0 system:'pucko-imap download'\n",
+"socat openssl:%s:993 system:'pucko-mail-imap download'\n"
+"#socat openssl:%s:993,verify=0 system:'pucko-mail-imap download'\n",
 imapserverbuf, imapserverbuf);
     write_string_to_new_file(downloadbuf, "initialDownload.sh");
 
     char updatebuf[BUFSIZE];
     sprintf(updatebuf,
-"socat openssl:%s:993 system:'pucko-imap update'\n"
-"#socat openssl:%s:993,verify=0 system:'pucko-imap update'\n",
+"socat openssl:%s:993 system:'pucko-mail-imap update'\n"
+"#socat openssl:%s:993,verify=0 system:'pucko-mail-imap update'\n",
 imapserverbuf, imapserverbuf);
     write_string_to_new_file(updatebuf, "update.sh");
 
     char idlebuf[BUFSIZE];
     sprintf(idlebuf,
-"socat openssl:%s:993 system:'pucko-imap idle'\n"
-"#socat openssl:%s:993,verify=0 system:'pucko-imap idle'\n",
+"socat openssl:%s:993 system:'pucko-mail-imap idle'\n"
+"#socat openssl:%s:993,verify=0 system:'pucko-mail-imap idle'\n",
 imapserverbuf, imapserverbuf);
     write_string_to_new_file(idlebuf, "idle.sh");
 
-    write_string_to_new_file("ls -v *.eml | tac | pucko-listMail\n", "list.sh");
+    write_string_to_new_file("ls -v *.eml | tac | pucko-mail-list\n", "list.sh");
 
     write_string_to_new_file("pucko MailInterface\n", "view.sh");
 
@@ -1049,15 +1049,15 @@ int main(int argc, char **argv)
         }
     }
     fprintf(stderr, "Usage:\n");
-    fprintf(stderr, "pucko-imap init\n");
-    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-imap download'\n");
-    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-imap update'\n");
-    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-imap idle'\n");
+    fprintf(stderr, "pucko-mail-imap init\n");
+    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-mail-imap download'\n");
+    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-mail-imap update'\n");
+    fprintf(stderr, "socat openssl:example.com:993 system:'pucko-mail-imap idle'\n");
     fprintf(stderr, "\n");
     fprintf(stderr, "To disable certificate verification:\n");
-    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-imap download'\n");
-    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-imap update'\n");
-    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-imap idle'\n");
+    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-mail-imap download'\n");
+    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-mail-imap update'\n");
+    fprintf(stderr, "socat openssl:example.com:993,verify=0 system:'pucko-mail-imap idle'\n");
     return 0;
 }
 

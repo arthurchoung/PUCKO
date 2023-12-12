@@ -78,7 +78,7 @@ $ perl build.pl
 
 The final executable will be the file 'pucko'.
 
-When running pucko, the other commands such as pucko-listMail, pucko-printMailHeaders, and so on need to be in your PATH.
+When running pucko, the other commands such as pucko-mail-list, pucko-mail-printHeaders, and so on need to be in your PATH.
 
 Run the command from the directory containing the *.eml email files. It will read the *.eml files from the current directory and display a list.
 

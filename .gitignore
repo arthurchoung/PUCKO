@@ -1,8 +1,8 @@
 Build
 pucko
-pucko-imap
-pucko-listMail
-pucko-extractMailPart
-pucko-printMailMessage
-pucko-printMailContentType
-pucko-printMailHeaders
+pucko-mail-imap
+pucko-mail-list
+pucko-mail-extractPart
+pucko-mail-printMessage
+pucko-mail-printContentType
+pucko-mail-printHeaders
