@@ -74,7 +74,7 @@
 {
     id obj = [@"MailInterface" asInstance];
     [obj setValue:self forKey:@"array"];
-    [obj setValue:@"MailHTMLMessageHeaders:(NSArray|addObject:'pucko-mail-printHeaders'|addObject:(selectedObject|name)|runCommandAndReturnOutput|asString) plain:(NSArray|addObject:'pucko-mail-printContentType'|addObject:(selectedObject|name)|addObject:'text/plain'|runCommandAndReturnOutput|asString) html:(NSArray|addObject:'pucko-mail-printContentType'|addObject:(selectedObject|name)|addObject:'text/html'|runCommandAndReturnOutput|asString) :(NSArray|addObject:'pucko-extractMailPart'|addObject:(selectedObject|name)|runCommandAndReturnOutput|asString|lines)" forKey:@"defaultMessageForClick"];
+    [obj setValue:@"MailHTMLMessageHeaders:(NSArray|addObject:'pucko-mail-printHeaders'|addObject:(selectedObject|name)|runCommandAndReturnOutput|asString) plain:(NSArray|addObject:'pucko-mail-printContentType'|addObject:(selectedObject|name)|addObject:'text/plain'|runCommandAndReturnOutput|asString) html:(NSArray|addObject:'pucko-mail-printContentType'|addObject:(selectedObject|name)|addObject:'text/html'|runCommandAndReturnOutput|asString) :(NSArray|addObject:'pucko-mail-extractPart'|addObject:(selectedObject|name)|runCommandAndReturnOutput|asString|lines)" forKey:@"defaultMessageForClick"];
     return obj;
 }
 @end
