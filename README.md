@@ -8,14 +8,16 @@ For more information, please visit http://puckolinux.com
 
 A music browser in the style of the old versions of iOS.
 
-Displays a list based on the files in the current directory, using the following scrips:
+Displays a list based on the files in the current directory, using the output of the following scripts:
 
   * pucko-music-listAlbumsForArtist:.py
   * pucko-music-listArtists.py
   * pucko-music-listSongsForArtist:.py
   * pucko-music-listTracksForAlbum:.py
 
-Requires Python modules mutagen and pillow.
+The scripts can be modified as desired.
+
+Currently requires Python modules mutagen and pillow.
 
 To show albums:
 
