@@ -121,6 +121,7 @@ for key in keys:
         inputdata = io.BytesIO(allCoverart[key])
         try:
             image = PIL.Image.open(inputdata)
+            image = image.convert('RGB')
             image = image.resize((80, 80))
             outputdata = io.BytesIO()
             image.save(outputdata, 'PPM')
