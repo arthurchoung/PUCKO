@@ -1,12 +1,55 @@
-# PUCKO Linux Web Browser
+# PUCKO Linux
 
-Building a web browser that follows the Unix philosophy
+PUCKO Linux is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator of Linux.
 
 For more information, please visit http://puckolinux.com
 
-## Overview
+## Music
 
-The basic design goals of PUCKO Linux include:
+A music browser in the style of the old versions of iOS.
+
+Displays a list based on the files in the current directory, using the following scrips:
+
+  * pucko-music-listAlbumsForArtist:.py
+  * pucko-music-listArtists.py
+  * pucko-music-listSongsForArtist:.py
+  * pucko-music-listTracksForAlbum:.py
+
+Requires Python modules mutagen and pillow.
+
+To show albums:
+
+```
+$ pucko AlbumListNavigation
+```
+
+![Music Screenshot Album](Screenshots/pucko-music-screenshot-album.png)
+
+Click on an album to list the tracks:
+
+![Music Screenshot Track](Screenshots/pucko-music-screenshot-track.png)
+
+To show songs:
+
+```
+$ pucko SongListNavigation
+```
+
+![Music Screenshot Song](Screenshots/pucko-music-screenshot-song.png)
+
+To show artists:
+
+```
+$ pucko ArtistListNavigation
+```
+
+![Music Screenshot Artist](Screenshots/pucko-music-screenshot-artist.png)
+
+## Web Browser
+
+Building a web browser that follows the Unix philosophy
+
+The basic design goals:
 
   * Not monolithic
 
@@ -17,8 +60,6 @@ The basic design goals of PUCKO Linux include:
   * Optimization and performance is not a priority
 
 This is mostly for educational purposes.
-
-PUCKO Linux is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator for Linux.
 
 ## Notes
 
