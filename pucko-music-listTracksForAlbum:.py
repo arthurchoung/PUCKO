@@ -155,6 +155,7 @@ if albumCoverart:
     inputdata = io.BytesIO(albumCoverart)
     try:
         image = PIL.Image.open(inputdata)
+        image = image.convert('RGB')
         image = image.resize((120, 120))
         outputdata = io.BytesIO()
         image.save(outputdata, 'PPM')
