@@ -957,6 +957,8 @@ end:
 }
 - (void)drawNavigationBarInBitmap:(id)bitmap rect:(Int4)rect title:(id)title backButton:(id)backButton forwardButton:(id)forwardButton
 {
+    [bitmap useChicagoFont];
+
     int cellHeight = [Definitions navigationBarHeight];
 
     Int4 headerRect = [Definitions rectWithX:rect.x y:rect.y w:rect.w h:cellHeight];
