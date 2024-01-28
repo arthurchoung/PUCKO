@@ -205,6 +205,21 @@ static unsigned char *button_bottom_right =
 
 - (void)panelPhoto:(id)photo :(id)text
 {
+    int photoWidth = 82;
+    int photoHeight = 82;
+    id photoBitmap = nil;
+
+    id photoData= [_line decodeBase64ForKey:@"photoData"];
+    if (photoData) {
+        photoBitmap = [photoData bitmapFromPPMP6];
+        if (photoBitmap) {
+            photoWidth = [photoBitmap bitmapWidth];
+            photoWidth += 2;
+            photoHeight = [photoBitmap bitmapHeight];
+            photoHeight += 2;
+        }
+    }
+
     int leftWidth = (_r.w-40)/4;
     int rightWidth = ((_r.w-40)/4)*3;
     id fittedRightText = [_bitmap fitBitmapString:text width:rightWidth];
@@ -231,14 +246,9 @@ static unsigned char *button_bottom_right =
     Int4 photoRect;
     photoRect.x = _r.x+20;
     photoRect.y = _cursorY;
-    photoRect.w = 80;
-    photoRect.h = 80;
+    photoRect.w = photoWidth;
+    photoRect.h = photoHeight;
     photoRect.x += (leftWidth-20-photoRect.h)/2;
-    [Definitions drawInBitmap:_bitmap left:top_left middle:top_middle right:top_right x:photoRect.x y:photoRect.y w:photoRect.w palette:palette];
-    for (int buttonY=photoRect.y+3; buttonY<photoRect.y+photoRect.h-3; buttonY++) {
-        [Definitions drawInBitmap:_bitmap left:button_middle_left middle:button_middle_middle right:button_middle_right x:photoRect.x y:buttonY w:photoRect.w palette:palette];
-    }
-    [Definitions drawInBitmap:_bitmap left:bottom_left middle:bottom_middle right:bottom_right x:photoRect.x y:photoRect.y+photoRect.h-3 w:photoRect.w palette:palette];
 /*
     [_bitmap setColor:@"blue"];
     [_bitmap drawBitmapText:fittedLeftText rightAlignedAtX:r1.x+leftWidth-10 y:r1.y+10];
@@ -246,7 +256,17 @@ static unsigned char *button_bottom_right =
     [_bitmap setColor:textColor];
     [_bitmap drawBitmapText:fittedRightText x:_r.x+10+leftWidth+10 y:_cursorY+(photoRect.h-textHeight)/2];
 
-    [_bitmap drawCString:robotPixels palette:robotPalette x:photoRect.x+(photoRect.w-31)/2 y:photoRect.y+(photoRect.h-39)/2];
+    if (photoBitmap) {
+        [_bitmap drawBitmap:photoBitmap x:photoRect.x+1 y:photoRect.y+1];
+        [_bitmap drawRectangle:photoRect];
+    } else {
+        [Definitions drawInBitmap:_bitmap left:top_left middle:top_middle right:top_right x:photoRect.x y:photoRect.y w:photoRect.w palette:palette];
+        for (int buttonY=photoRect.y+3; buttonY<photoRect.y+photoRect.h-3; buttonY++) {
+            [Definitions drawInBitmap:_bitmap left:button_middle_left middle:button_middle_middle right:button_middle_right x:photoRect.x y:buttonY w:photoRect.w palette:palette];
+        }
+        [Definitions drawInBitmap:_bitmap left:bottom_left middle:bottom_middle right:bottom_right x:photoRect.x y:photoRect.y+photoRect.h-3 w:photoRect.w palette:palette];
+        [_bitmap drawCString:robotPixels palette:robotPalette x:photoRect.x+(photoRect.w-31)/2 y:photoRect.y+(photoRect.h-39)/2];
+    }
 
     _cursorY += photoRect.h;
 }
