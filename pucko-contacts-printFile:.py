@@ -4,6 +4,9 @@ import sys
 import re
 import vobject
 import urllib.parse
+import base64
+import PIL.Image
+import io
 
 path = ''
 data = None
@@ -105,4 +108,19 @@ try:
         print("version:%s" % (text))
 except:
     pass
+
+
+photodata = None
+try:
+    image = PIL.Image.open(path+'~photo')
+    image = image.convert('RGB')
+    image = image.resize((80, 80))
+    outputdata = io.BytesIO()
+    image.save(outputdata, 'PPM')
+    photodata = base64.b64encode(outputdata.getvalue()).decode('ascii')
+except:
+    pass
+
+if photodata:
+    print("photoData:%s" % (photodata))
 
