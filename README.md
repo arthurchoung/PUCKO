@@ -15,7 +15,7 @@ Displays a list based on the files in the current directory, using the output of
   * pucko-music-listSongsForArtist:.py
   * pucko-music-listTracksForAlbum:.py
 
-The scripts can be modified as desired.
+These scripts can be modified as desired.
 
 Currently requires Python modules mutagen and pillow.
 
@@ -46,6 +46,31 @@ $ pucko ArtistListNavigation
 ```
 
 ![Music Screenshot Artist](Screenshots/pucko-music-screenshot-artist.png)
+
+## Contacts
+
+A vcf/vcard browser in the style of the old versions of iOS.
+
+Displays a list based on the files in the current directory, using the output of the following scripts:
+
+  * pucko-contacts-list.py
+  * pucko-contacts-printFile:.py
+
+These scripts can be modified as desired.
+
+Currently requires Python modules vobject and pillow.
+
+To show list:
+
+```
+$ pucko ContactListNavigation
+```
+
+![Contacts Screenshot List](Screenshots/pucko-contacts-screenshot-list.png)
+
+Click on a row to show details:
+
+![Contacts Screenshot Detail](Screenshots/pucko-contacts-screenshot-detail.png)
 
 ## Web Browser
 
