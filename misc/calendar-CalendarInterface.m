@@ -544,7 +544,11 @@ start:
     if (_buttonDown == _buttonHover) {
         id elt = [_buttons nth:_buttonDown-1];
         if (elt) {
-            [elt showAlert];
+            id cmd = nsarr();
+            [cmd addObject:@"pucko"];
+            [cmd addObject:@"showAlert:"];
+            [cmd addObject:elt];
+            [cmd runCommandInBackground];
         }
     }
     _buttonDown = 0;
