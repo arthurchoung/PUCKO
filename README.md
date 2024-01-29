@@ -72,6 +72,24 @@ Click on a row to show details:
 
 ![Contacts Screenshot Detail](Screenshots/pucko-contacts-screenshot-detail.png)
 
+## Calendar
+
+Displays a calendar using the output of 'cal' for the actual calendar.
+
+The script 'pucko-calendar-listEvents.py' reads .ics files in the current directory and lists the event dates, which are highlighted in yellow.
+
+These scripts can be modified as desired.
+
+Currently requires Python module vobject.
+
+To show a yearly calendar:
+
+```
+$ pucko CalendarInterface
+```
+
+![Calendar Screenshot Year](Screenshots/pucko-calendar-screenshot-year.png)
+
 ## Web Browser
 
 Building a web browser that follows the Unix philosophy
