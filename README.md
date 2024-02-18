@@ -1,8 +1,8 @@
-# PUCKO Linux
+# PUCKO
 
-PUCKO Linux is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator of Linux.
+PUCKO is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator.
 
-For more information, please visit http://puckolinux.com
+For more information, please visit http://hotdogpucko.com
 
 ## Music
 
