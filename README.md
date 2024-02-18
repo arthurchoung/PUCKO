@@ -1,10 +1,16 @@
 # PUCKO
 
-PUCKO is an attempt to recreate iOS 4/5/6 with simplified graphics that would be suitable for the 8-bit or 16-bit era.
-
 PUCKO is an acronym that stands for **P**roblematic **U**nsophisticated **C**omputer **K**eyboard **O**perator.
 
 For more information, please visit http://hotdogpucko.com
+
+## Overview
+
+PUCKO is an attempt to recreate iOS 4/5/6 with simplified graphics that would be suitable for the 8-bit or 16-bit era.
+
+This is an example of the home screen with Windows 3 icons.
+
+![Home Screen](Screenshots/pucko-homescreen.png)
 
 ## Music
 
