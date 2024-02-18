@@ -1,0 +1,611 @@
+<html>
+<head>
+<title>HOTDOG PUCKO</title>
+<style>
+pre {
+    background-color:#c3c7cb;
+    padding:2em;
+    border-left:1em solid white;
+    border-right:1em solid white;
+}
+</style>
+</head>
+<body style="background-color:#ee7300;">
+<div style="width:80%; margin:auto; background-color:white;border: 1px solid black;">
+<div style="border: 8px solid #4e3431;">
+<div style="border: 1px solid black; padding-left:1em; padding-right:1em;">
+<h1 align=center>
+<img src="hotdog.png">
+HOTDOG
+<img src="hotdog.png" style="padding-right:10px">
+<img src="pucko.png" style="padding-left:10px">
+PUCKO
+<img src="pucko.png">
+</h1>
+<hr style="clear:both">
+
+<h2>Overview</h2>
+
+<p>
+PUCKO is an acronym that stands for <b>P</b>roblematic <b>U</b>nsophisticated <b>C</b>omputer <b>K</b>eyboard <b>O</b>perator.
+
+<h2>Related Project</h2>
+
+<p>
+HOTDOG Linux
+
+<p>
+<a href="http://hotdoglinux.com">http://hotdoglinux.com</a>
+
+<h2>Source Code</h2>
+
+<ul>
+<li><a href="https://github.com/arthurchoung/PUCKO">Github</a>
+</ul>
+
+<hr style="clear:both">
+
+<h2>Music</h2>
+
+<p>
+A music browser in the style of the old versions of iOS.
+
+<p>
+Displays a list based on the files in the current directory, using the output of the following scripts:
+
+<ul>
+<li>pucko-music-listAlbumsForArtist:.py
+<li>pucko-music-listArtists.py
+<li>pucko-music-listSongsForArtist:.py
+<li>pucko-music-listTracksForAlbum:.py
+</ul>
+
+<p>
+These scripts can be modified as desired.
+
+<p>
+Currently requires Python modules mutagen and pillow.
+
+<p>
+To show albums:
+
+<pre>
+$ pucko AlbumListNavigation
+</pre>
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-music-screenshot-album.png"></div>
+
+<p>
+Click on an album to list the tracks:
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-music-screenshot-track.png"></div>
+
+<p>
+To show songs:
+
+<pre>
+$ pucko SongListNavigation
+</pre>
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-music-screenshot-song.png"></div>
+
+<p>
+To show artists:
+
+<pre>
+$ pucko ArtistListNavigation
+</pre>
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-music-screenshot-artist.png"></div>
+
+<p>
+<hr style="clear:both">
+
+<h2>Contacts</h2>
+
+<p>
+A vcf/vcard browser in the style of the old versions of iOS.
+
+<p>
+Displays a list based on the files in the current directory, using the output of the following scripts:
+
+<ul>
+<li>pucko-contacts-list.py
+<li>pucko-contacts-printFile:.py
+</ul>
+
+<p>
+These scripts can be modified as desired.
+
+<p>
+Currently requires Python modules vobject and pillow.
+
+<p>
+To show list:
+
+<pre>
+$ pucko ContactListNavigation
+</pre>
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-contacts-screenshot-list.png"></div>
+
+<p>
+Click on a row to show details:
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-contacts-screenshot-detail.png"></div>
+
+<p>
+<hr style="clear:both">
+
+<h2>Calendar</h2>
+
+<p>
+Displays a calendar using the output of 'cal' for the actual calendar.
+
+<p>
+The script 'pucko-calendar-listEvents.py' reads .ics files in the current directory and lists the event dates, which are highlighted in yellow.
+
+<p>
+These scripts can be modified as desired.
+
+<p>
+Currently requires Python module vobject.
+
+<p>
+To show a yearly calendar:
+
+<pre>
+$ pucko CalendarInterface
+</pre>
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-calendar-screenshot-year.png"></div>
+
+<p>
+<hr style="clear:both">
+
+<h2>Web Browser</h2>
+
+<p>
+Building a web browser that follows the Unix philosophy
+
+<p>
+The basic design goals:
+
+<ul>
+<li>Not monolithic
+<li>Breaking everything down into small, understandable, interchangeable programs
+<li>Do everything one step at a time
+<li>Optimization and performance is not a priority
+</ul>
+
+<p>
+This is mostly for educational purposes.
+
+<h2>Notes</h2>
+
+<p>
+The very first web browser was written in Objective-C.
+
+<p>
+This web browser will also be written in Objective-C.
+
+<p>
+<a href="http://curl.se">Curl</a> is used to access the network.
+
+<p>
+<a href="https://imagemagick.org">ImageMagick</a> (convert) is used to load image files.
+
+<h2>How to compile and run</h2>
+
+<p>
+Change to the directory 'PUCKO'.
+
+<pre>
+$ perl build.pl
+</pre>
+
+<p>
+This creates an executable called 'pucko'.
+
+<p>
+Create a temp directory. Temp files will be read from and written to the current directory.
+
+<pre>
+$ mkdir temp
+
+$ cd temp
+</pre>
+
+<p>
+Run the executable with no arguments to see the usage text.
+
+<pre>
+$ ../pucko
+</pre>
+
+<h2>Part C - HTML Tables</h2>
+
+<p>
+It would be nice to have a simple renderer for HTML emails. Generally HTML emails use tables for layout. However, the majority of websites no longer use tables for layout, which makes it somewhat difficult to find an example to use for testing. Luckily, there does exist a web site so primitive that it still uses tables..... Hacker News.
+
+<p>
+Right now, very little is being done in terms of rendering HTML elements correctly. There is minimal 'td width' and 'td bgcolor' support, just enough to show the orange bar at the top. This is what it currently looks like.
+
+<pre>
+$ ../pucko ViewHTMLTable: https://news.ycombinator.com
+</pre>
+
+<p>
+Right-click to access the contextual menu and select 'Toggle Tag Borders'.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partC-step1-1.png"></div>
+
+<p>
+This is the interface for viewing the tag hierarchy.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partC-step1-2.png"></div>
+
+<h2>Part B - Parse CSS</h2>
+
+<h3>Step 1: Print the 'style' tag</h3>
+
+<p>
+Internal CSS is located in the text of the style tag.
+
+<p>
+The relevant code is located in 'misc/pucko-printStyleText.m'.
+
+<pre>
+$ ../pucko printStyleText: https://google.com
+</pre>
+
+<p>
+This will download the url to the current directory and print the text of the style tag.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partB-step1.png"></div>
+
+<h3>Step 2: Print the 'style' attribute for all tags</h3>
+
+<p>
+Inline CSS is located in the style attribute for each tag.
+
+<p>
+The relevant code is located in 'misc/pucko-printStyleAttribute.m'.
+
+<pre>
+$ ../pucko printStyleAttribute: https://news.ycombinator.com
+</pre>
+
+<p>
+This will download the url to the current directory and print the style attribute for each tag.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partB-step2.png"></div>
+
+<h3>Step 3: Print the 'link href' tags</h3>
+
+<p>
+External CSS files are specified in the 'link href' tags.
+
+<p>
+The relevant code is located in 'misc/pucko-printLinkHref.m'
+
+<pre>
+$ ../pucko printLinkHref: https://www.freebsd.org
+</pre>
+
+<p>
+This will download the url to the current directory and print the 'link href' tags.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partB-step3.png"></div>
+
+<h3>Step 4: Download 'link href' tags</h3>
+
+<p>
+The relevant code is located in 'misc/pucko-downloadLinkHref.m'.
+
+<pre>
+$ ../pucko downloadLinkHref: https://www.freebsd.org
+</pre>
+
+<p>
+This will download the files specified in the 'link href' tags to the current directory.
+
+<h3>Step 5: Parse the basic structure of a CSS file</h3>
+
+<p>
+The relevant code is located in 'misc/pucko-parseCSS.m'.
+
+<p>
+First download an example CSS file.
+
+<pre>
+$ curl -o global.css https://www.freebsd.org/css/global.css
+</pre>
+
+<p>
+This will download 'global.css'.
+
+<pre>
+$ cat global.css | ../pucko parseCSS
+</pre>
+
+<p>
+This will parse the CSS file into an array of dictionaries. Further parsing will be necessary.
+
+<h3>Step 6: Parse CSS @import</h3>
+
+<p>
+A CSS file is allowed to import another style sheet using '@import'.
+
+<p>
+The relevant code is located in 'misc/pucko-parseCSSImport.m'.
+
+<pre>
+$ ../pucko testParseCSSImport: https://www.freebsd.org/css/fixed.css
+</pre>
+
+<p>
+This will parse the @import urls in the CSS file and print the urls.
+
+<h3>Step 7: Enumerate all external CSS rules</h3>
+
+<p>
+External CSS files are specified in the 'link href' tags.
+
+<p>
+The relevant code is located in 'misc/pucko-enumerateExternalCSS.m'.
+
+<pre>
+$ ../pucko enumerateExternalCSS: https://www.freebsd.org
+</pre>
+
+<p>
+This will go through all the 'link href' stylesheet urls, parse the CSS, parse the stylesheets referenced by '@import', and return an array.
+
+<h3>Step 8: Enumerate all internal CSS rules</h3>
+
+<p>
+Internal CSS is located in the text of the style tag.
+
+<p>
+The relevant code is located in 'misc/pucko-enumerateInternalCSS.m'.
+
+<pre>
+$ ../pucko enumerateInternalCSS: https://google.com
+</pre>
+
+<p>
+This will go through all the 'style' tags, parse the CSS, and return an array.
+
+<h2>Part A - Parse HTML, view text, images, and follow links</h2>
+
+<h3>Step 1: Parsing HTML</h3>
+
+<p>
+<a href="http://html-tidy.org">HTML Tidy</a> has C code which will be used to parse HTML.
+
+<p>
+The HTML gets parsed into a hierarchy of arrays and dictionaries.
+
+<p>
+The relevant code is located in 'misc/pucko-parseHTML.m'.
+
+<p>
+The usage of HTML Tidy is self-contained in this one file.
+
+<p>
+It is a very small amount of code, since most of the work is done by HTML Tidy.
+
+<p>
+It serves as a simplified wrapper. HTML Tidy is a C API and can be cumbersome to use, because of the memory management, and the various C data types. These details are eliminated by using the simplified wrapper.
+
+<p>
+The HTML Tidy code is located in 'external/tidy-html5-5.6.0'.
+
+<p>
+Use <a href="http://curl.se">curl</a> to download an HTML file.
+
+<pre>
+$ curl -o index.html https://www.freebsd.org
+</pre>
+
+<p>
+This creates an HTML file called 'index.html'.
+
+<pre>
+$ cat index.html | ../pucko parseHTML
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and prints the resulting hierarchy of arrays and dictionaries.
+
+<p>
+The relevant code is located in 'misc/pucko-parseHTML.m'.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step1.png"></div>
+
+<h3>Step 2: Print the text from the HTML</h3>
+
+<p>
+As a simple exercise, parse an HTML document and print out only the text.
+
+<p>
+The relevant code is located in 'misc/pucko-printText.m'.
+
+<pre>
+$ cat index.html | ../pucko printText
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and prints out only the text.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step2.png"></div>
+
+<h3>Step 3: Print the 'src' attribute of the 'img' tag</h3>
+
+<p>
+To be able to show images, start by parsing an HTML document and printing out the img src urls.
+
+<p>
+The relevant code is located in 'misc/pucko-printImgSrc.m'.
+
+<pre>
+$ cat index.html | ../pucko printImgSrc
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and prints out only the 'src' attribute of the 'img' tag.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step3.png"></div>
+
+<h3>Step 4: Resolve 'img src' relative urls to absolute urls</h3>
+
+<p>
+The relevant code is located in 'misc/pucko-resolveURL.m'.
+
+<pre>
+$ cat index.html | ../pucko testAsRootURL
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and tests 'asRootURL' using the 'a href' and 'img src' urls.
+
+<pre>
+$ cat index.html | ../pucko testAsBaseURL
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and tests 'asBaseURL' using the 'a href' and 'img src' urls.
+
+<pre>
+$ ../pucko testResolveURL: https://www.freebsd.org
+</pre>
+
+<p>
+This downloads https://www.freebsd.org if necessary, parses it, and resolves the 'a href' and 'img src' urls, using 'https://freebsd.org' as the base url for relative urls.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step4.png"></div>
+
+<h3>Step 5: Download the 'img src' urls</h3>
+
+<p>
+The relevant code is located in 'misc/pucko-downloadImgSrc.m'.
+
+<pre>
+$ ../pucko downloadImgSrc: https://www.freebsd.org
+</pre>
+
+<p>
+This downloads https://www.freebsd.org if necessary, parses it, and uses curl to download the 'img src' urls to the current directory, using 'https://www.freebsd.org' as the base url for relative urls.
+
+<h3>Step 6: View the text and images</h3>
+
+<p>
+<a href="https://imagemagick.org">ImageMagick</a> (convert) is used to read the images by converting them to the PPM format in memory (the PPM files are not saved).
+
+<p>
+The relevant code is located in 'misc/pucko-ViewImgSrc.m'.
+
+<pre>
+$ ../pucko ViewImgSrc: https://www.freebsd.org
+</pre>
+
+<p>
+This downloads https://www.freebsd.org, parses it, and uses 'convert' from ImageMagick to read the downloaded 'img src' files that are in the current directory, and displays the images along with the text.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step6.png"></div>
+
+<h3>Step 7: Print the 'href' attribute of the 'a' tag</h3>
+
+<p>
+To be able to follow links, start by parsing an HTML document and printing out the a href urls.
+
+<p>
+The relevant code is located in 'misc/pucko-printAHref.m'.
+
+<pre>
+$ cat index.html | ../pucko printAHref
+</pre>
+
+<p>
+This pipes index.html to stdin, parses it, and prints out only the 'href' attribute of the 'a' tag.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step7.png"></div>
+
+<h3>Step 8: View the a href links along with the text and images</h3>
+
+<p>
+The relevant code is located in 'misc/pucko-ViewAHref.m'.
+
+<pre>
+$ ../pucko ViewAHref: https://www.freebsd.org
+</pre>
+
+<p>
+This downloads https://www.freebsd.org if necessary, parses it, and displays the images along with the text, if the images have been previously downloaded with 'downloadImgSrc:'.
+
+<p>
+Links are shown with a blue border. If a link is hovered, the border is made to be thicker. If there is a mouseDown event, the color changes to purple.
+
+<p>
+<div style="width:100%;overflow-x:scroll;white-space:nowrap"><img src="pucko-screenshot-partA-step8.png"></div>
+
+<h3>Step 9: View a URL and click to follow links</h3>
+
+<p>
+This combines the previous steps into a single command.
+
+<p>
+The relevant code is located in 'misc/pucko-ViewURL.m'.
+
+<pre>
+$ ../pucko ViewURL: https://www.freebsd.org
+</pre>
+
+<p>
+This will download the files to the current directory, and view them. If a link is clicked, that url will be downloaded and viewed. And so on.
+
+<p>
+This represents a very simple browser that can follow links.
+
+<p>
+<hr style="clear:both">
+
+<h2>Legal</h2>
+
+<p>
+Copyright (c) 2023 Arthur Choung. All rights reserved.
+
+<p>
+Email: arthur -at- hotdoglinux.com
+
+<p>
+Released under the GNU General Public License, version 3.
+
+<p>
+For details on the license, refer to the LICENSE file.
+
+</div>
+</div>
+</div>
+</body>
+</html>
+
