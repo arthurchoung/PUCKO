@@ -8,7 +8,7 @@ For more information, please visit http://hotdogpucko.com
 
 PUCKO is an attempt to recreate iOS 4/5/6 with simplified graphics that would be suitable for the 8-bit or 16-bit era.
 
-This is an example of the home screen with Windows 3 icons.
+This is a preliminary version of the home screen with Windows 3 icons.
 
 ![Home Screen](Screenshots/pucko-homescreen.png)
 
