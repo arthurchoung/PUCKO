@@ -114,6 +114,14 @@ The basic design goals:
 
 This is mostly for educational purposes.
 
+## Lock Screen
+
+```
+$ pucko LockScreen
+```
+
+![Lock Screen](Screenshots/pucko-lockscreen.png)
+
 ## Notes
 
 The very first web browser was written in Objective-C.
