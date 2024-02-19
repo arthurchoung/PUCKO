@@ -98,6 +98,14 @@ $ pucko CalendarInterface
 
 ![Calendar Screenshot Year](Screenshots/pucko-calendar-screenshot-year.png)
 
+## Lock Screen
+
+```
+$ pucko LockScreen
+```
+
+![Lock Screen](Screenshots/pucko-lockscreen.png)
+
 ## Web Browser
 
 Building a web browser that follows the Unix philosophy
@@ -113,14 +121,6 @@ The basic design goals:
   * Optimization and performance is not a priority
 
 This is mostly for educational purposes.
-
-## Lock Screen
-
-```
-$ pucko LockScreen
-```
-
-![Lock Screen](Screenshots/pucko-lockscreen.png)
 
 ## Notes
 
