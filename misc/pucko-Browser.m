@@ -78,7 +78,7 @@
 {
     id cmd = nsarr();
     [cmd addObject:@"pucko"];
-    [cmd addObject:@"inputWithAlertText:arg0"];
+    [cmd addObject:@"inputWithAlertText:"];
     [cmd addObject:@"Open URL..."];
     id data = [cmd runCommandAndReturnOutput];
     if (!data) {
