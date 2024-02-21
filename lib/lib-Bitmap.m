@@ -832,7 +832,7 @@ NSLog(@"Out of memory!");
     unsigned char *p = _pixelBytes;
     for (int i=0; i<_bitmapHeight; i++) {
         for (int j=0; j<_bitmapWidth; j++) {
-            fprintf(fp, "%d %d %d\n", p[0], p[1], p[2]);
+            fprintf(fp, "%d %d %d\n", p[2], p[1], p[0]);
             p += 4;
         }
         fprintf(fp, "\n");
@@ -980,6 +980,46 @@ NSLog(@"Out of memory!");
         p++;
     }
 }
+- (void)drawBitmapText:(id)text x:(int)startX y:(int)startY palette:(id)palette
+{
+    if (![text length]) {
+        return;
+    }
+    if (![palette length]) {
+        return;
+    }
+    unsigned char *palettecstr = [palette UTF8String];
+    int textHeight = _fontHeights['A'];
+    unsigned char *str = [text UTF8String];
+    unsigned char *p = str;
+    int x = startX;
+    int y = startY;
+    while (*p) {
+        if (*p == '#') {
+            if (p[1] == '{') {
+                unsigned char *q = strchr(p+2, '}');
+                id message = nsfmt(@"%.*s", q - p - 2, p+2);
+                [self evaluateMessage:message];
+                p = q+1;
+                continue;
+            }
+        }
+
+        if (*p == '\n') {
+            x = startX;
+            y += textHeight;
+        } else {
+            unsigned char *cstr = _fontCStrings[*p];
+            if (cstr) {
+                int width = [Definitions widthForCString:cstr];
+                [self drawCString:cstr palette:palettecstr x:x y:y];
+                int textXSpacing = _fontXSpacings[*p];
+                x += width + textXSpacing;
+            }
+        }
+        p++;
+    }
+}
 
 - (void)drawBitmapText:(id)text centeredAtX:(int)x y:(int)y w:(int)w h:(int)h
 {
@@ -995,6 +1035,19 @@ NSLog(@"Out of memory!");
     int textHeight = _fontHeights['A'];
     Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
     [self drawBitmapText:text x:textRect.x y:textRect.y+1];
+}
+- (void)drawBitmapText:(id)text centeredInRect:(Int4)rect palette:(id)palette
+{
+    if (![text length]) {
+        return;
+    }
+    if (![palette length]) {
+        return;
+    }
+    int textWidth = [self bitmapWidthForText:text];
+    int textHeight = _fontHeights['A'];
+    Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
+    [self drawBitmapText:text x:textRect.x y:textRect.y+1 palette:palette];
 }
 
 - (void)drawBitmapText:(id)text leftAlignedAtX:(int)x y:(int)y w:(int)w h:(int)h
