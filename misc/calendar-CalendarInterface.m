@@ -27,6 +27,16 @@
 
 #define MAX_RECT 640
 
+static void drawStripedBackgroundInBitmap_rect_(id bitmap, Int4 r)
+{
+    [bitmap setColorIntR:205 g:212 b:222 a:255];
+    [bitmap fillRectangleAtX:r.x y:r.y w:r.w h:r.h];
+    [bitmap setColorIntR:201 g:206 b:209 a:255];
+    for (int i=6; i<r.w; i+=10) {
+        [bitmap fillRectangleAtX:r.x+i y:r.y w:4 h:r.h];
+    }
+}
+
 static int monthNameAsInt(id str)
 {
     if ([str isEqual:@"January"]) {
@@ -246,7 +256,7 @@ static int monthNameAsInt(id str)
 
 - (void)drawInBitmap:(id)bitmap rect:(Int4)r
 {
-    [Definitions drawStripedBackgroundInBitmap:bitmap rect:r];
+    drawStripedBackgroundInBitmap_rect_(bitmap, r);
 
     [self setValue:nsarr() forKey:@"buttons"];
 
@@ -270,7 +280,7 @@ start:
         if (_pendingScrollToIndex && (_pendingScrollToIndex == i)) {
             _pendingScrollToIndex = 0;
             _scrollY = rowCursorY;
-            [Definitions drawStripedBackgroundInBitmap:bitmap rect:r];
+            drawStripedBackgroundInBitmap_rect_(bitmap, r);
             goto start;
         }
 
