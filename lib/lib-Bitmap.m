@@ -25,6 +25,15 @@
 
 #import "HOTDOG.h"
 
+static Int4 centerRect_inRect_(Int4 innerRect, Int4 outerRect)
+{
+    return [Definitions rectWithX:outerRect.x+(outerRect.w-innerRect.w)/2
+                            y:outerRect.y+(outerRect.h-innerRect.h)/2
+                            w:innerRect.w
+                            h:innerRect.h];
+}
+
+
 static int hexchartoint(char c)
 {
     switch(c) {
@@ -47,6 +56,321 @@ static int hexchartoint(char c)
     }
     return 0;
 }
+
+@implementation Definitions(fjkdsljfkldsjlkfsdjf)
+
++ (BOOL)isX:(int)x insideRect:(Int4)r
+{
+    if (x >= r.x) {
+        if (x < r.x+r.w) {
+            return YES;
+        }
+    }
+    return NO;
+}
++ (BOOL)isX:(int)x y:(int)y insideRect:(Int4)r
+{
+    if (x >= r.x) {
+        if (x < r.x+r.w) {
+            if (y >= r.y) {
+                if (y < r.y+r.h) {
+                    return YES;
+                }
+            }
+        }
+    }
+    return NO;
+}
++ (BOOL)doesRect:(Int4)r1 intersectRect:(Int4)r2
+{
+    if (r2.x > r1.x+r1.w-1) {
+        return NO;
+    }
+    if (r1.x > r2.x+r2.w-1) {
+        return NO;
+    }
+    if (r1.y > r2.y+r2.h-1) {
+        return NO;
+    }
+    if (r2.y > r1.y+r1.h-1) {
+        return NO;
+    }
+    return YES;
+}
+
++ (Int4)rectWithX:(int)x y:(int)y w:(int)w h:(int)h
+{
+    Int4 result = (Int4){
+        x, y, w, h
+    };
+    return result;
+}
+
+
++ (id)fitBitmapString:(id)text width:(int)maxWidth
+{
+    return [Definitions fitBitmapString:text width:maxWidth widths:[Definitions arrayOfWidthsForChicagoFont]];
+}
++ (id)fitBitmapString:(id)text width:(int)maxWidth widths:(int *)widths
+{
+    if (maxWidth <= 0) {
+        return nil;
+    }
+    id results = @"";
+    unsigned char *str = [text UTF8String];
+    if (!str) {
+        return nil;
+    }
+    int len = strlen(str);
+    unsigned char *p = str;
+    unsigned char *lineP = p;
+    unsigned char *spaceP = NULL;
+    int lineWidth = 0;
+    while(*p) {
+        if (*p == '\n') {
+            if (p == lineP) {
+                results = [results cat:@"\n"];
+            } else {
+                results = [results cat:nsfmt(@"%.*s\n", p - lineP, lineP)];
+            }
+            lineWidth = 0;
+            p++;
+            lineP = p;
+            spaceP = NULL;
+            continue;
+        }
+        if (*p == ' ') {
+            spaceP = p;
+        }
+        int charWidth = widths[*p];
+        if (lineWidth + charWidth < maxWidth) {
+            if (!lineWidth) {
+                lineWidth = charWidth;
+            } else {
+                lineWidth += 2 + charWidth;
+            }
+            p++;
+            continue;
+        }
+        if (p == lineP) {
+            return nil;
+        }
+        if (spaceP) {
+            results = [results cat:nsfmt(@"%.*s\n", spaceP - lineP, lineP)];
+            lineWidth = 0;
+            lineP = spaceP+1;
+            p = lineP;
+            spaceP = NULL;
+            continue;
+        }
+        results = [results cat:nsfmt(@"%.*s\n", p - lineP, lineP)];
+        lineWidth = charWidth;
+        lineP = p;
+        spaceP = NULL;
+        p++;
+    }
+    if (p != lineP) {
+        results = [results cat:nsfmt(@"%.*s\n", p - lineP, lineP)];
+    }
+    return results;
+}
+
++ (int)bitmapHeightForText:(id)text
+{
+    return [Definitions bitmapHeightForText:text heights:[Definitions arrayOfHeightsForChicagoFont]];
+}
++ (int)bitmapHeightForText:(id)text heights:(int *)heights
+{
+    unsigned char *p = [text UTF8String];
+    if (!p) {
+        return 0;
+    }
+    int h = 0;
+    int charHeight = heights['X'];
+    BOOL lineHasChar = NO;
+    while (*p) {
+        if (*p == '\n') {
+            h += charHeight;
+            lineHasChar = NO;
+        } else {
+            lineHasChar = YES;
+        }
+        p++;
+    }
+    if (lineHasChar) {
+        h += charHeight;
+    }
+    return h;
+}
++ (int)bitmapWidthForText:(id)text
+{
+    return [Definitions bitmapWidthForText:text widths:[Definitions arrayOfWidthsForChicagoFont] xspacings:[Definitions arrayOfXSpacingsForChicagoFont]];
+}
++ (int)bitmapWidthForText:(id)text widths:(int *)widths xspacings:(int *)xspacings
+{
+    if (!text) {
+        return 0;
+    }
+    unsigned char *str = [text UTF8String];
+    unsigned char *p = str;
+    int maxLineWidth = 0;
+    int lineWidth = 0;
+    while (*p) {
+        if (*p == '#') {
+            if (p[1] == '{') {
+                unsigned char *q = strchr(p+2, '}');
+                id message = nsfmt(@"%.*s", q - p - 2, p+2);
+                [self evaluateMessage:message];
+                p = q+1;
+                continue;
+            }
+        }
+
+        if (*p == '\n') {
+            if (lineWidth > maxLineWidth) {
+                maxLineWidth = lineWidth;
+            }
+            lineWidth = 0;
+        } else {
+            int width = widths[*p];
+            if (lineWidth) {
+                lineWidth += xspacings[*p];
+            }
+            lineWidth += width;
+        }
+        p++;
+    }
+    if (lineWidth > maxLineWidth) {
+        maxLineWidth = lineWidth;
+    }
+    return maxLineWidth;
+}
++ (int)bitmapWidthForLineOfTextCString:(unsigned char *)str widths:(int *)widths xspacings:(int *)xspacings
+{
+    unsigned char *p = str;
+    int maxLineWidth = 0;
+    int lineWidth = 0;
+    while (*p) {
+        if (*p == '\n') {
+            return lineWidth;
+        } else {
+            int width = widths[*p];
+            if (lineWidth) {
+                lineWidth += xspacings[*p];
+            }
+            lineWidth += width;
+        }
+        p++;
+    }
+    return lineWidth;
+}
+
++ (int)widthForCString:(unsigned char *)str
+{
+    if (!str) {
+        return 0;
+    }
+    unsigned char *p = strchr(str, '\n');
+    if (!p) {
+        return strlen(str);
+    }
+    return p - str;
+}
++ (int)heightForCString:(unsigned char *)str
+{
+    if (!str) {
+        return 0;
+    }
+    unsigned char *p = str;
+    int numberOfLines = 0;
+    int lineLength = 0;
+    for (;;) {
+        if (!*p) {
+            break;
+        }
+        if (*p == '\n') {
+            lineLength = 0;
+            numberOfLines++;
+        } else {
+            lineLength++;
+        }
+        p++;
+    }
+    if (lineLength) {
+        numberOfLines++;
+    }
+    return numberOfLines;
+}
++ (void)drawInBitmap:(id)bitmap left:(unsigned char *)left palette:(unsigned char *)leftPalette middle:(unsigned char *)middle palette:(unsigned char *)middlePalette right:(unsigned char *)right palette:(unsigned char *)rightPalette x:(int)startX y:(int)startY w:(int)w
+{
+    int middleHeight = [Definitions heightForCString:middle];
+    int leftWidth = [Definitions widthForCString:left];
+    int middleWidth = [Definitions widthForCString:middle];
+    int rightWidth = [Definitions widthForCString:right];
+
+    [bitmap drawCString:left palette:leftPalette x:startX y:startY];
+
+    if (middleWidth) {
+        int x = leftWidth;
+        for (x=leftWidth; x<w-rightWidth; x+=middleWidth) {
+            [bitmap drawCString:middle palette:middlePalette x:startX+x y:startY];
+        }
+    }
+
+    [bitmap drawCString:right palette:rightPalette x:startX+w-rightWidth y:startY];
+}
++ (void)drawInBitmap:(id)bitmap left:(unsigned char *)left middle:(unsigned char *)middle right:(unsigned char *)right x:(int)startX y:(int)startY w:(int)w palette:(unsigned char *)palette
+{
+    int middleHeight = [Definitions heightForCString:middle];
+    int leftWidth = [Definitions widthForCString:left];
+    int middleWidth = [Definitions widthForCString:middle];
+    int rightWidth = [Definitions widthForCString:right];
+
+    [bitmap drawCString:left palette:palette x:startX y:startY];
+
+    if (middleWidth) {
+        int x = leftWidth;
+        for (x=leftWidth; x<w-rightWidth; x+=middleWidth) {
+            [bitmap drawCString:middle palette:palette x:startX+x y:startY];
+        }
+    }
+
+    [bitmap drawCString:right palette:palette x:startX+w-rightWidth y:startY];
+}
+
++ (void)drawInBitmap:(id)bitmap left:(unsigned char *)left middle:(unsigned char *)middle right:(unsigned char *)right centeredInRect:(Int4)r palette:(unsigned char *)palette
+{
+    int middleHeight = [Definitions heightForCString:middle];
+    int leftWidth = [Definitions widthForCString:left];
+    int middleWidth = [Definitions widthForCString:middle];
+    int rightWidth = [Definitions widthForCString:right];
+    Int4 centeredRect = centerRect_inRect_([Definitions rectWithX:0 y:0 w:r.w-4.0 h:middleHeight], r);
+    [bitmap drawCString:left palette:palette x:centeredRect.x y:centeredRect.y];
+
+    if (middleWidth) {
+        int x = leftWidth;
+        for (x=leftWidth; x<centeredRect.w-rightWidth; x+=middleWidth) {
+            [bitmap drawCString:middle palette:palette x:centeredRect.x+x y:centeredRect.y];
+        }
+    }
+
+    [bitmap drawCString:right palette:palette x:centeredRect.x+centeredRect.w-rightWidth y:centeredRect.y];
+}
++ (void)drawInBitmap:(id)bitmap top:(unsigned char *)top palette:(unsigned char *)topPalette middle:(unsigned char *)middle palette:(unsigned char *)middlePalette bottom:(unsigned char *)bottom palette:(unsigned char *)bottomPalette x:(int)startX y:(int)startY h:(int)h
+{
+    int heightForTop = [Definitions heightForCString:top];
+    int heightForMiddle = [Definitions heightForCString:middle];
+    int heightForBottom = [Definitions heightForCString:bottom];
+
+    [bitmap drawCString:top palette:topPalette x:startX y:startY];
+    for (int y=startY+heightForTop; y<startY+h-heightForBottom; y+=heightForMiddle) {
+        [bitmap drawCString:middle palette:middlePalette x:startX y:y];
+    }
+    [bitmap drawCString:bottom palette:bottomPalette x:startX y:startY+h-heightForBottom];
+}
+
+@end
+
 
 
 @interface Bitmap : IvarObject
@@ -1033,7 +1357,7 @@ NSLog(@"Out of memory!");
     }
     int textWidth = [self bitmapWidthForText:text];
     int textHeight = _fontHeights['A'];
-    Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
+    Int4 textRect = centerRect_inRect_([Definitions rectWithX:0 y:0 w:textWidth h:textHeight], rect);
     [self drawBitmapText:text x:textRect.x y:textRect.y+1];
 }
 - (void)drawBitmapText:(id)text centeredInRect:(Int4)rect palette:(id)palette
@@ -1046,7 +1370,7 @@ NSLog(@"Out of memory!");
     }
     int textWidth = [self bitmapWidthForText:text];
     int textHeight = _fontHeights['A'];
-    Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
+    Int4 textRect = centerRect_inRect_([Definitions rectWithX:0 y:0 w:textWidth h:textHeight], rect);
     [self drawBitmapText:text x:textRect.x y:textRect.y+1 palette:palette];
 }
 
@@ -1062,7 +1386,7 @@ NSLog(@"Out of memory!");
     }
     int textWidth = [self bitmapWidthForText:text];
     int textHeight = _fontHeights['A'];
-    Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
+    Int4 textRect = centerRect_inRect_([Definitions rectWithX:0 y:0 w:textWidth h:textHeight], rect);
     [self drawBitmapText:text x:rect.x+8 y:textRect.y+2];
 }
 
@@ -1092,7 +1416,7 @@ NSLog(@"Out of memory!");
     }
     int textWidth = [self bitmapWidthForText:text];
     int textHeight = _fontHeights['A'];
-    Int4 textRect = [Definitions centerRect:[Definitions rectWithX:0 y:0 w:textWidth h:textHeight] inRect:rect];
+    Int4 textRect = centerRect_inRect_([Definitions rectWithX:0 y:0 w:textWidth h:textHeight], rect);
     [self drawBitmapText:text x:rect.x+rect.w-textRect.w-8 y:textRect.y+2];
 }
 - (void)drawBitmapText:(id)text rightAlignedAtX:(int)x y:(int)y
