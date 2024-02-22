@@ -27,6 +27,16 @@
 
 #define MAX_RECT 640
 
+static void drawStripedBackgroundInBitmap_rect_(id bitmap, Int4 r)
+{
+    [bitmap setColorIntR:205 g:212 b:222 a:255];
+    [bitmap fillRectangleAtX:r.x y:r.y w:r.w h:r.h];
+    [bitmap setColorIntR:201 g:206 b:209 a:255];
+    for (int i=6; i<r.w; i+=10) {
+        [bitmap fillRectangleAtX:r.x+i y:r.y w:4 h:r.h];
+    }
+}
+
 static id _dialogText =
 @"VOICE-OVER:A way out west there was this fella, fella I want to tell you about, fella by the name of Jeff Lebowski. At least, that was the handle his lovin' parents gave him, but he never had much use for it himself. This Lebowski, he called himself the Dude. Now, Dude, that's a name no one would self-apply where I come from. But then, there was a lot about the Dude that didn't make a whole lot of sense to me. And a lot about where he lived, like- wise. But then again, maybe that's why I found the place s'durned innarestin'.\n"
 @"VOICE-OVER:They call Los Angeles the City of Angels. I didn't find it to be that exactly, but I'll allow as there are some nice folks there. 'Course, I can't say I seen London, and I never been to France, and I ain't never seen no queen in her damn undies as the fella says. But I'll tell you what, after seeing Los Angeles and thisahere story I'm about to unfold-- wal, I guess I seen somethin' ever' bit as stupefyin' as ya'd see in any a those other places, and in English too, so I can die with a smile on my face without feelin' like the good Lord gypped me.\n"
@@ -1396,7 +1406,7 @@ static id _dialogText =
 }
 - (void)panelStripedBackground
 {
-    [Definitions drawStripedBackgroundInBitmap:_bitmap rect:_r];
+    drawStripedBackgroundInBitmap_rect_(_bitmap, _r);
 }
 
 - (void)panelColor:(id)color
