@@ -10,7 +10,7 @@ PUCKO is an attempt to recreate iOS 4/5/6 with simplified graphics that would be
 
 This is a preliminary version of the home screen with Windows 3 icons.
 
-![Home Screen](Screenshots/pucko-homescreen.png)
+![Home Screen](Webpage/pucko-homescreen.png)
 
 ## Music
 
@@ -33,11 +33,11 @@ To show albums:
 $ pucko AlbumListNavigation
 ```
 
-![Music Screenshot Album](Screenshots/pucko-music-screenshot-album.png)
+![Music Screenshot Album](Webpage/pucko-music-screenshot-album.png)
 
 Click on an album to list the tracks:
 
-![Music Screenshot Track](Screenshots/pucko-music-screenshot-track.png)
+![Music Screenshot Track](Webpage/pucko-music-screenshot-track.png)
 
 To show songs:
 
@@ -45,7 +45,7 @@ To show songs:
 $ pucko SongListNavigation
 ```
 
-![Music Screenshot Song](Screenshots/pucko-music-screenshot-song.png)
+![Music Screenshot Song](Webpage/pucko-music-screenshot-song.png)
 
 To show artists:
 
@@ -53,7 +53,7 @@ To show artists:
 $ pucko ArtistListNavigation
 ```
 
-![Music Screenshot Artist](Screenshots/pucko-music-screenshot-artist.png)
+![Music Screenshot Artist](Webpage/pucko-music-screenshot-artist.png)
 
 ## Contacts
 
@@ -74,11 +74,11 @@ To show list:
 $ pucko ContactListNavigation
 ```
 
-![Contacts Screenshot List](Screenshots/pucko-contacts-screenshot-list.png)
+![Contacts Screenshot List](Webpage/pucko-contacts-screenshot-list.png)
 
 Click on a row to show details:
 
-![Contacts Screenshot Detail](Screenshots/pucko-contacts-screenshot-detail.png)
+![Contacts Screenshot Detail](Webpage/pucko-contacts-screenshot-detail.png)
 
 ## Calendar
 
@@ -96,7 +96,7 @@ To show a yearly calendar:
 $ pucko CalendarInterface
 ```
 
-![Calendar Screenshot Year](Screenshots/pucko-calendar-screenshot-year.png)
+![Calendar Screenshot Year](Webpage/pucko-calendar-screenshot-year.png)
 
 ## Lock Screen
 
@@ -104,7 +104,7 @@ $ pucko CalendarInterface
 $ pucko LockScreen
 ```
 
-![Lock Screen](Screenshots/pucko-lockscreen.png)
+![Lock Screen](Webpage/pucko-lockscreen.png)
 
 ## Web Browser
 
@@ -168,11 +168,11 @@ $ ../pucko ViewHTMLTable: https://news.ycombinator.com
 
 Right-click to access the contextual menu and select 'Toggle Tag Borders'.
 
-![Part C Step 1 Screenshot 1](Screenshots/pucko-screenshot-partC-step1-1.png)
+![Part C Step 1 Screenshot 1](Webpage/pucko-screenshot-partC-step1-1.png)
 
 This is the interface for viewing the tag hierarchy.
 
-![Part C Step 1 Screenshot 2](Screenshots/pucko-screenshot-partC-step1-2.png)
+![Part C Step 1 Screenshot 2](Webpage/pucko-screenshot-partC-step1-2.png)
 
 ## Part B - Parse CSS
 
@@ -188,7 +188,7 @@ $ ../pucko printStyleText: https://google.com
 
 This will download the url to the current directory and print the text of the style tag.
 
-![Part B Step 1 Screenshot](Screenshots/pucko-screenshot-partB-step1.png)
+![Part B Step 1 Screenshot](Webpage/pucko-screenshot-partB-step1.png)
 
 ### Step 2: Print the 'style' attribute for all tags
 
@@ -202,7 +202,7 @@ $ ../pucko printStyleAttribute: https://news.ycombinator.com
 
 This will download the url to the current directory and print the style attribute for each tag.
 
-![Part B Step 2 Screenshot](Screenshots/pucko-screenshot-partB-step2.png)
+![Part B Step 2 Screenshot](Webpage/pucko-screenshot-partB-step2.png)
 
 ### Step 3: Print the 'link href' tags
 
@@ -216,7 +216,7 @@ $ ../pucko printLinkHref: https://www.freebsd.org
 
 This will download the url to the current directory and print the 'link href' tags.
 
-![Part B Step 3 Screenshot](Screenshots/pucko-screenshot-partB-step3.png)
+![Part B Step 3 Screenshot](Webpage/pucko-screenshot-partB-step3.png)
 
 ### Step 4: Download 'link href' tags
 
@@ -316,7 +316,7 @@ This pipes index.html to stdin, parses it, and prints the resulting hierarchy of
 
 The relevant code is located in 'misc/pucko-parseHTML.m'.
 
-![Part A Step 1 Screenshot](Screenshots/pucko-screenshot-partA-step1.png)
+![Part A Step 1 Screenshot](Webpage/pucko-screenshot-partA-step1.png)
 
 ### Step 2: Print the text from the HTML
 
@@ -330,7 +330,7 @@ $ cat index.html | ../pucko printText
 
 This pipes index.html to stdin, parses it, and prints out only the text.
 
-![Part A Step 2 Screenshot](Screenshots/pucko-screenshot-partA-step2.png)
+![Part A Step 2 Screenshot](Webpage/pucko-screenshot-partA-step2.png)
 
 ### Step 3: Print the 'src' attribute of the 'img' tag
 
@@ -344,7 +344,7 @@ $ cat index.html | ../pucko printImgSrc
 
 This pipes index.html to stdin, parses it, and prints out only the 'src' attribute of the 'img' tag.
 
-![Part A Step 3 Screenshot](Screenshots/pucko-screenshot-partA-step3.png)
+![Part A Step 3 Screenshot](Webpage/pucko-screenshot-partA-step3.png)
 
 ### Step 4: Resolve 'img src' relative urls to absolute urls
 
@@ -368,7 +368,7 @@ $ ../pucko testResolveURL: https://www.freebsd.org
 
 This downloads https://www.freebsd.org if necessary, parses it, and resolves the 'a href' and 'img src' urls, using 'https://freebsd.org' as the base url for relative urls.
 
-![Part A Step 4 Screenshot](Screenshots/pucko-screenshot-partA-step4.png)
+![Part A Step 4 Screenshot](Webpage/pucko-screenshot-partA-step4.png)
 
 ### Step 5: Download the 'img src' urls
 
@@ -392,7 +392,7 @@ $ ../pucko ViewImgSrc: https://www.freebsd.org
 
 This downloads https://www.freebsd.org, parses it, and uses 'convert' from ImageMagick to read the downloaded 'img src' files that are in the current directory, and displays the images along with the text.
 
-![Part A Step 6 Screenshot](Screenshots/pucko-screenshot-partA-step6.png)
+![Part A Step 6 Screenshot](Webpage/pucko-screenshot-partA-step6.png)
 
 ### Step 7: Print the 'href' attribute of the 'a' tag
 
@@ -406,7 +406,7 @@ $ cat index.html | ../pucko printAHref
 
 This pipes index.html to stdin, parses it, and prints out only the 'href' attribute of the 'a' tag.
 
-![Part A Step 7 Screenshot](Screenshots/pucko-screenshot-partA-step7.png)
+![Part A Step 7 Screenshot](Webpage/pucko-screenshot-partA-step7.png)
 
 ### Step 8: View the a href links along with the text and images
 
@@ -420,7 +420,7 @@ This downloads https://www.freebsd.org if necessary, parses it, and displays the
 
 Links are shown with a blue border. If a link is hovered, the border is made to be thicker. If there is a mouseDown event, the color changes to purple.
 
-![Part A Step 8 Screenshot](Screenshots/pucko-screenshot-partA-step8.png)
+![Part A Step 8 Screenshot](Webpage/pucko-screenshot-partA-step8.png)
 
 ### Step 9: View a URL and click to follow links
 
