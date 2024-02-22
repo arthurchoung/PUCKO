@@ -23,7 +23,7 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=PUCKO
-VERSION=${VERSION:-20240204}	# replace with version of program
+VERSION=${VERSION:-20240221}	# replace with version of program
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}		# the "_SBo" is required
 
